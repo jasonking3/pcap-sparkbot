@@ -4,7 +4,7 @@ var debug = require('debug')('pcap');
 
 module.exports = function(controller) {
 
-    function pcap_start(bot, message, device, iface, proto, src, dst) {
+    function pcap_start(bot, message, device, iface, proto, src, dst, duration) {
         return new Promise(function (resolve, reject) {
 
             var options = {
@@ -17,8 +17,7 @@ module.exports = function(controller) {
                     "src": src,
                     "dst": dst,
                     "bucket": "codefest-pcap",
-                    "filename": "foo.pcap",
-                    "duration": 10
+                    "duration": duration
                 }
             };
             debug('pcap_start: ' + JSON.stringify(options));
@@ -75,8 +74,8 @@ module.exports = function(controller) {
             bot.reply(message, 'Job ' + job.job_id + ' failed.');
     }
 
-    controller.hears(['^capture device (.*) interface (.*) proto (.*) src (.*) dst (.*)$'], 'direct_message,direct_mention', function(bot, message) {
-        pcap_start(bot, message, message.match[1], message.match[2], message.match[3], message.match[4], message.match[5]).then( function (job) {
+    controller.hears(['^capture device (.*) interface (.*) proto (.*) src (.*) dst (.*) duration (.*)$'], 'direct_message,direct_mention', function(bot, message) {
+        pcap_start(bot, message, message.match[1], message.match[2], message.match[3], message.match[4], message.match[5], message.match[6]).then( function (job) {
             bot.reply(message, 'Started capture job ' + job.job_id + ' on device ' + message.match[1]);
             pcap_status(message.match[1], job.job_id, pcap_result, bot, message);
         });
