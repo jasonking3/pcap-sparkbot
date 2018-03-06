@@ -4,7 +4,7 @@ services:
 
   pcap-sparkbot:
     build: .
-    image: jasonking/pcap-sparkbot:latest
+    image: pcap-sparkbot
     env_file: 'botkit-vars.env'
     ports:
       - '8080:8080'
