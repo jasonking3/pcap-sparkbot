@@ -27,7 +27,7 @@ module.exports = function(controller) {
                 resolve(response);
             }).catch(function (err) {
                 console.log('Error starting capture ' + err);
-                bot.reply(message, 'Error starting capture ' + err + ' on device ' + device);
+                bot.reply(message, 'Error starting capture on device ' + device + ': ' + err);
                 reject(err);
             });
             
@@ -59,13 +59,14 @@ module.exports = function(controller) {
                         callback(response);
                     }
                 } else {
+                    debug('pcap_status: ' + JSON.stringify(response));
                     setTimeout(request, delay);
                 }
             }).catch(function (err) {
-                console.log('Error occurred checking job result ' + err);
+                console.log('pcap_status: error occurred checking job result ' + err);
             });
         }, delay);
-    }''
+    }
 
     function pcap_result(job, bot, message) {
         if(job.status == 'UPLOADED')
