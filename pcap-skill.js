@@ -101,7 +101,7 @@ module.exports = function(controller) {
     });
 
     controller.hears(['.*'], 'direct_message,direct_mention', function(bot, message) {
-        bot.reply(message, 'I\'m sorry, I did not understand your request.  Try asking me for help using the **help** command');
+        bot.reply(message, 'I\'m sorry, I did not understand your request.  Try asking me for help using the **help** command.');
     });
     
 };
