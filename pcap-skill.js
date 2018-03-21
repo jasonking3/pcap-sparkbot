@@ -2,6 +2,20 @@ var rp = require('request-promise');
 var Promise = require('promise');
 var debug = require('debug')('pcap');
 
+var help_text = 'Hello!  I am a bot that can assist with launching packet captures on Cisco IOS-XE devices.  ' +
+                'I make use of the packet capture API found [here](https://github.com/chrishocker/xepacketcap).  ' +
+                'If your device has this API installed, you can ask me to start a packet capture using the following syntax:\n\n' +
+                '**capture device** [device] **interface** [interface] **proto** [ip|tcp|udp] **src** [src] **dst** [dst] **duration** [duration]\n\n' +
+                'Where:  \n' +
+                '- device = FQDN or IP address of the IOS-XE device  \n' +
+                '- interface = the interface to capture, ie. GigabitEthernet1  \n' +
+                '- proto = the protocol to capture, ie. ip, tcp or udp  \n' +
+                '- src = the source address to capture, ie. any or standard Cisco ACL source address specification  \n' +
+                '- dst = the destination address to capture, ie. any or standard Cisco ACL source address specification  \n' +
+                '- duration = the duration to run the capture in seconds\n\n' +
+                'For example:\n\n' +
+                '**capture device** 192.168.0.1 **interface** Gi1 **proto** tcp **src** any **dst** any **duration** 10\n\n';                ;
+
 module.exports = function(controller) {
 
     function pcap_start(bot, message, device, iface, proto, src, dst, duration) {
@@ -82,4 +96,12 @@ module.exports = function(controller) {
         });
     });
 
+    controller.hears(['help'], 'direct_message,direct_mention', function(bot, message) {
+        bot.reply(message, help_text);
+    });
+
+    controller.hears(['.*'], 'direct_message,direct_mention', function(bot, message) {
+        bot.reply(message, 'I\'m sorry, I did not understand your request.  Try asking me for help using the **help** command');
+    });
+    
 };
