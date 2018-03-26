@@ -10,8 +10,8 @@ var help_text = 'Hello!  I am a bot that can assist with launching packet captur
                 '- device = FQDN or IP address of the IOS-XE device  \n' +
                 '- interface = the interface to capture, ie. GigabitEthernet1  \n' +
                 '- proto = the protocol to capture, ie. ip, tcp or udp  \n' +
-                '- src = the source address to capture, ie. any or standard Cisco ACL source address specification  \n' +
-                '- dst = the destination address to capture, ie. any or standard Cisco ACL source address specification  \n' +
+                '- src = the source address to capture, ie. any or host IP address  \n' +
+                '- dst = the destination address to capture, ie. any or host IP address  \n' +
                 '- duration = the duration to run the capture in seconds\n\n' +
                 'For example:\n\n' +
                 '**capture device** 192.168.0.1 **interface** Gi1 **proto** tcp **src** any **dst** any **duration** 10\n\n';                ;
