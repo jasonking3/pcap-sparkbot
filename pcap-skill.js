@@ -30,7 +30,7 @@ module.exports = function(controller) {
                     "proto": proto,
                     "src": src,
                     "dst": dst,
-                    "bucket": "codefest-pcap",
+                    "bucket": "xepacketcap",
                     "duration": duration
                 }
             };
