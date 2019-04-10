@@ -2,7 +2,7 @@ var rp = require('request-promise');
 var Promise = require('promise');
 var debug = require('debug')('pcap');
 
-var help_text = 'Hi!  I am a bot that can assist with launching packet captures on Cisco IOS-XE devices.  ' +
+var help_text = 'Hello!  I am a bot that can assist with launching packet captures on Cisco IOS-XE devices.  ' +
                 'I make use of the packet capture API found [here](https://github.com/chrishocker/xepacketcap).  ' +
                 'If your device has this API installed, you can ask me to start a packet capture using the following syntax:\n\n' +
                 '**capture device** [device] **interface** [interface] **proto** [ip|tcp|udp] **src** [src] **dst** [dst] **duration** [duration]\n\n' +
