@@ -26,3 +26,4 @@ The docker-compose.yml file will look for an environemnt configuration file name
 After you have supplied the required environment variables in the botkit-vars.env file.  The easiest way to run the container is with Docker Compose.  From within the pcap-sparkbot directory:
 
 `docker-compose up`
+
